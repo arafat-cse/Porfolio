@@ -61,16 +61,16 @@
   gap: 2rem;
 }
 
-.profile-card,
-.journey-card {
-  background: var(--card-bg);
-  border-radius: 1.5rem;
-  border: 1px solid var(--card-border);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  box-shadow:
-    0 20px 60px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
+// .profile-card,
+// .journey-card {
+//   background: var(--card-bg);
+//   border-radius: 1.5rem;
+//   border: 1px solid var(--card-border);
+//   padding: clamp(1.5rem, 3vw, 2.5rem);
+//   box-shadow:
+//     0 20px 60px rgba(15, 23, 42, 0.08),
+//     inset 0 1px 0 rgba(255, 255, 255, 0.05);
+// }
 
 .profile-card {
   display: flex;
@@ -162,7 +162,7 @@
 }
 
 .timeline-item__date {
-  flex: 0 0 90px;
+  flex: .10 0 90px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
