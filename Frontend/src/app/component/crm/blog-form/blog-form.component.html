@@ -1,31 +1,150 @@
-<form class="crm-form" [formGroup]="blogForm" (ngSubmit)="submit()">
-  <h3>Blog Editor</h3>
-  <p>Start a new article or update an existing post.</p>
+<section class="blog-list" *ngIf="!showForm">
+  <header>
+    <div>
+      <h3>Blog Content Management</h3>
+      <p>Create, edit, and manage your blog posts.</p>
+    </div>
+    <button class="accent" type="button" (click)="startCreate()">+ Create New Post</button>
+  </header>
 
-  <label>
-    Title
-    <input formControlName="title" />
-  </label>
-
-  <label>
-    Category
-    <select formControlName="category">
-      <option>Technology</option>
-      <option>Design</option>
-      <option>Leadership</option>
+  <div class="filters">
+    <input type="search" placeholder="Search posts..." [(ngModel)]="searchTerm" name="postSearch" />
+    <select [(ngModel)]="categoryFilter" name="categoryFilter">
+      <option>All Categories</option>
+      <option *ngFor="let option of categories">{{ option }}</option>
     </select>
-  </label>
+    <select [(ngModel)]="statusFilter" name="statusFilter">
+      <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+    </select>
+  </div>
 
-  <label>
-    Excerpt
-    <textarea rows="2" formControlName="excerpt"></textarea>
-  </label>
+  <article class="post-card" *ngFor="let post of filteredPosts">
+    <div class="card-meta">
+      <span class="badge" [class.published]="post.status === 'published'">{{ post.status }}</span>
+      <span class="badge neutral">{{ post.category }}</span>
+      <span class="badge accent" *ngIf="post.featured">Featured</span>
+    </div>
+    <h4>{{ post.title }}</h4>
+    <p>{{ post.excerpt }}</p>
+    <div class="post-info">
+      <span>{{ post.publishDate | date: 'MMM d, y' }}</span>
+      <span>{{ post.readTime }}</span>
+      <span>{{ post.views }} views</span>
+    </div>
+    <div class="tags">
+      <span *ngFor="let tag of post.tags">{{ tag }}</span>
+    </div>
+    <div class="card-actions">
+      <button class="ghost" type="button" (click)="togglePublish(post)" [disabled]="isProcessing(post.id)">
+        {{ post.status === 'published' ? 'Unpublish' : 'Publish' }}
+      </button>
+      <button class="primary" type="button" (click)="editPost(post)">Edit</button>
+      <button class="danger" type="button" (click)="deletePost(post)" [disabled]="isProcessing(post.id)">
+        Delete
+      </button>
+    </div>
+  </article>
+</section>
 
-  <label>
-    Content
-    <textarea rows="6" formControlName="content"></textarea>
-  </label>
+<section class="blog-builder" *ngIf="showForm">
+  <header class="builder-header">
+    <button type="button" class="link" (click)="closeForm()">
+      ← Back to Blog Management
+    </button>
+    <div class="actions">
+      <button type="button" class="ghost" (click)="submit('draft')" [disabled]="isSaving">Save Draft</button>
+      <button type="button" class="accent" (click)="submit('published')" [disabled]="isSaving">
+        {{ editingPost ? 'Update Post' : 'Publish Post' }}
+      </button>
+    </div>
+  </header>
 
-  <button type="submit">Save draft</button>
-  <p class="success" *ngIf="saved">{{ saved }}</p>
-</form>
+  <div class="builder-grid" [formGroup]="blogForm">
+    <aside class="sidebar">
+      <section class="panel">
+        <header>
+          <div>
+            <p>Post Status</p>
+            <span class="badge">{{ editingPost?.status ?? 'draft' }}</span>
+          </div>
+        </header>
+        <div class="switch-row">
+          <span>Featured Post</span>
+          <label class="switch">
+            <input type="checkbox" formControlName="featured" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="switch-row">
+          <span>Trending Post</span>
+          <label class="switch">
+            <input type="checkbox" formControlName="trending" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="panel-title">Publishing</p>
+        <label>
+          Category
+          <select formControlName="category">
+            <option *ngFor="let option of categories" [value]="option">{{ option }}</option>
+          </select>
+        </label>
+        <label>
+          Publish Date
+          <input type="date" formControlName="publishDate" />
+        </label>
+        <label>
+          Estimated Read Time
+          <input formControlName="readTime" placeholder="e.g. 5 min read" />
+        </label>
+      </section>
+
+      <section class="panel" ngModelGroup="tagsGroup">
+        <p class="panel-title">Tags</p>
+        <div class="tag-input">
+          <input type="text" [(ngModel)]="tagInput" placeholder="Add a tag" name="tagInput" />
+          <button type="button" (click)="addTag()">+</button>
+        </div>
+        <div class="tags">
+          <button type="button" *ngFor="let tag of tags" (click)="removeTag(tag)">
+            {{ tag }} ×
+          </button>
+        </div>
+        <small>Suggested:</small>
+        <div class="suggested">
+          <button type="button" *ngFor="let tag of suggestedTags" (click)="addTag(tag)">+ {{ tag }}</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="panel-title">Featured Image</p>
+        <label class="upload">
+          <input type="file" (change)="uploadImage($event)" />
+          <span>Upload Image</span>
+          <small>Click below to upload an image</small>
+          <strong>{{ featuredImageName || 'Choose Image' }}</strong>
+        </label>
+      </section>
+    </aside>
+
+    <form class="builder-form" [formGroup]="blogForm">
+      <h2>Create New Blog Post</h2>
+      <label>
+        Title
+        <input formControlName="title" placeholder="Enter a compelling title" />
+      </label>
+      <label>
+        Excerpt
+        <textarea rows="2" formControlName="excerpt" placeholder="Short teaser for your article"></textarea>
+      </label>
+      <div class="editor-block">
+        <p>Content</p>
+        <app-rich-text-editor formControlName="content" placeholder="Write your blog post content here..."></app-rich-text-editor>
+      </div>
+      <p class="success" *ngIf="saved">{{ saved }}</p>
+    </form>
+  </div>
+</section>

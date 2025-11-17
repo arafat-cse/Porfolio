@@ -1,6 +1,8 @@
 <div class="blog-detail">
-  <ng-container *ngIf="post; else missing">
-    <app-blog-view [post]="post" (closed)="handleClose()"></app-blog-view>
+  <ng-container *ngIf="!isLoading; else loading">
+    <ng-container *ngIf="post; else missing">
+      <app-blog-view [post]="post" (closed)="handleClose()"></app-blog-view>
+    </ng-container>
   </ng-container>
 </div>
 
@@ -8,5 +10,11 @@
   <div class="blog-detail__missing">
     <p>We couldn't find that article.</p>
     <button type="button" (click)="handleClose()">Back to blog</button>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <div class="blog-detail__missing">
+    <p>Loading article...</p>
   </div>
 </ng-template>
