@@ -1,0 +1,27 @@
+<form class="crm-form" [formGroup]="contactForm" (ngSubmit)="submit()">
+  <h3>Contact Preferences</h3>
+  <p>Control how prospects and clients reach out.</p>
+
+  <label>
+    Support email
+    <input formControlName="supportEmail" type="email" />
+  </label>
+
+  <label>
+    Phone
+    <input formControlName="phone" />
+  </label>
+
+  <label>
+    Location
+    <input formControlName="location" />
+  </label>
+
+  <label>
+    Auto reply
+    <textarea rows="3" formControlName="autoReply"></textarea>
+  </label>
+
+  <button type="submit">Save preferences</button>
+  <p class="success" *ngIf="saved">{{ saved }}</p>
+</form>

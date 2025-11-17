@@ -1,0 +1,31 @@
+<form class="crm-form" [formGroup]="blogForm" (ngSubmit)="submit()">
+  <h3>Blog Editor</h3>
+  <p>Start a new article or update an existing post.</p>
+
+  <label>
+    Title
+    <input formControlName="title" />
+  </label>
+
+  <label>
+    Category
+    <select formControlName="category">
+      <option>Technology</option>
+      <option>Design</option>
+      <option>Leadership</option>
+    </select>
+  </label>
+
+  <label>
+    Excerpt
+    <textarea rows="2" formControlName="excerpt"></textarea>
+  </label>
+
+  <label>
+    Content
+    <textarea rows="6" formControlName="content"></textarea>
+  </label>
+
+  <button type="submit">Save draft</button>
+  <p class="success" *ngIf="saved">{{ saved }}</p>
+</form>

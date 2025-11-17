@@ -1,0 +1,33 @@
+<section class="crm-login">
+  <div class="crm-login__card">
+    <header>
+      <p class="label">Portfolio CRM</p>
+      <h1>Welcome back 👋</h1>
+      <p class="subtext">Use the seeded accounts to manage your portfolio content from one place.</p>
+    </header>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate>
+      <label>
+        <span>Email</span>
+        <input type="email" placeholder="admin@admin.com" formControlName="email" />
+        <small class="error" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">Valid email required</small>
+      </label>
+
+      <label>
+        <span>Password</span>
+        <input type="password" placeholder="********" formControlName="password" />
+        <small class="error" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+          Password required
+        </small>
+      </label>
+
+      <p class="hint">Seeded logins: admin&#64;admin.com / admin&#64;1234</p>
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Signing in...' : 'Sign in' }}
+      </button>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+    </form>
+  </div>
+</section>

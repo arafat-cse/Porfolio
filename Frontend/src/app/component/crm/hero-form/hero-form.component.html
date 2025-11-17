@@ -1,0 +1,32 @@
+<form class="crm-form" [formGroup]="heroForm" (ngSubmit)="submit()">
+  <h3>Hero Section</h3>
+  <p>Control the headline and CTAs in the hero of your public site.</p>
+
+  <label>
+    Greeting
+    <input formControlName="greeting" placeholder="Hi, I am" />
+  </label>
+
+  <label>
+    Name
+    <input formControlName="name" placeholder="Your name" />
+  </label>
+
+  <label>
+    Title
+    <textarea formControlName="title" rows="3"></textarea>
+  </label>
+
+  <label>
+    Primary CTA Label
+    <input formControlName="primaryCta" placeholder="View Portfolio" />
+  </label>
+
+  <label>
+    Secondary CTA Label
+    <input formControlName="secondaryCta" placeholder="Read Blog" />
+  </label>
+
+  <button type="submit">Save changes</button>
+  <p class="success" *ngIf="saved">{{ saved }}</p>
+</form>
