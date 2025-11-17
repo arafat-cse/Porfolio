@@ -21,13 +21,13 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('admin@1234'),
             ],
             [
-                'name' => 'Ashraf Ul Islam Chowdhury',
-                'email' => 'ashraf@admin.com',
+                'name' => 'Md Samaul islam',
+                'email' => 'samaul@admin.com',
                 'password' => Hash::make('admin@1234'),
             ],
             [
-                'name' => 'Md. Shahriar Shakif',
-                'email' => 'shakif@admin.com',
+                'name' => 'Md Arafat Rahman',
+                'email' => 'arafat@admin.com',
                 'password' => Hash::make('admin@1234'),
             ],
         ];
