@@ -9,7 +9,7 @@
     <div class="hobbies__grid">
       <article *ngFor="let hobby of hobbies">
         <div class="card__image">
-          <img [src]="hobby.image" [alt]="hobby.title" />
+          <img [src]="hobby.image" [alt]="hobby.title" alt="image" />
           <span class="card__icon">{{ hobby.icon }}</span>
         </div>
         <div class="card__body">
