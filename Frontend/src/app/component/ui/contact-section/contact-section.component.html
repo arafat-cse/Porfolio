@@ -1,0 +1,144 @@
+<section class="contact" id="contact">
+  <div class="contact__content">
+    <header class="contact__header">
+      <p class="eyebrow">Contact</p>
+      <h2>Get In Touch</h2>
+      <p>{{ intro }}</p>
+    </header>
+
+    <div class="contact__layout">
+      <div class="contact__column">
+        <article class="info-card">
+          <div class="info-card__lead">
+            <p class="label">Let's Talk</p>
+            <p class="lede">{{ note }}</p>
+          </div>
+
+          <ul class="contact-list">
+            <li class="contact-item" *ngFor="let method of contactMethods">
+              <span class="contact-item__icon" aria-hidden="true">
+                <ng-container [ngSwitch]="method.icon">
+                  <svg *ngSwitchCase="'mail'" viewBox="0 0 24 24" role="presentation">
+                    <path
+                      d="M4 6.75a1.75 1.75 0 0 1 1.75-1.75h12.5A1.75 1.75 0 0 1 20 6.75v10.5A1.75 1.75 0 0 1 18.25 19H5.75A1.75 1.75 0 0 1 4 17.25z"
+                    />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                  <svg *ngSwitchCase="'phone'" viewBox="0 0 24 24" role="presentation">
+                    <path
+                      d="M8.8 4.7 6.9 5.7a2 2 0 0 0-1 2.4c1.1 3.3 3.6 5.8 6.9 6.9a2 2 0 0 0 2.4-1l1-1.9a1 1 0 0 1 1.1-.5l3.1.7a1 1 0 0 1 .8 1v3.7a2 2 0 0 1-2.2 2 17.5 17.5 0 0 1-15-15A2 2 0 0 1 5 3.5h3.7a1 1 0 0 1 1 .8l.7 3.1a1 1 0 0 1-.6 1.1z"
+                    />
+                  </svg>
+                  <svg *ngSwitchDefault viewBox="0 0 24 24" role="presentation">
+                    <path
+                      d="M12 3.75a6.25 6.25 0 0 0-6.25 6.25c0 4.1 4.68 9.4 5.8 10.6a.6.6 0 0 0 .9 0c1.12-1.16 5.8-6.5 5.8-10.6A6.25 6.25 0 0 0 12 3.75zm0 9a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5z"
+                    />
+                  </svg>
+                </ng-container>
+              </span>
+              <div>
+                <p class="label">{{ method.label }}</p>
+                <p class="value">{{ method.value }}</p>
+                <p class="helper">{{ method.helper }}</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="info-card__socials">
+            <p class="label">Follow Me</p>
+            <div class="social-icons">
+              <a
+                *ngFor="let social of socials"
+                class="social-icons__button"
+                [href]="social.url"
+                target="_blank"
+                rel="noreferrer noopener"
+                [attr.aria-label]="social.label"
+              >
+                <span class="sr-only">{{ social.label }}</span>
+                <ng-container [ngSwitch]="social.icon">
+                  <svg *ngSwitchCase="'github'" viewBox="0 0 24 24" role="presentation">
+                    <path
+                      d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-3 .7-3.7-1.4-3.7-1.4-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.7-.7 1.9-1 .1-.7.4-1.1.7-1.3-2.4-.3-5-1.2-5-5.3 0-1.2.4-2.1 1.1-2.9a3.8 3.8 0 0 1 .1-2.9s.9-.3 3 .9a10.4 10.4 0 0 1 5.4 0c2.1-1.2 3-1 3-1a3.8 3.8 0 0 1 .1 2.9 4 4 0 0 1 1 2.9c0 4.1-2.6 5-5 5.3.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2"
+                    />
+                  </svg>
+                  <svg *ngSwitchCase="'linkedin'" viewBox="0 0 24 24" role="presentation">
+                    <path d="M6.2 9.5h3.1V21H6.2zM7.7 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4" />
+                    <path
+                      d="M13 9.5h3v1.7c.4-.9 1.5-1.9 3.3-1.9 3.5 0 4.2 2.3 4.2 5.3V21h-3.1v-5.7c0-1.4 0-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21H13z"
+                      transform="translate(-4.9)"
+                    />
+                  </svg>
+                  <svg *ngSwitchDefault viewBox="0 0 24 24" role="presentation">
+                    <path
+                      d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18m0 2.2a6.8 6.8 0 0 1 6.1 3.8 6 6 0 0 1-6.1 1 6 6 0 0 1-6 1 6.8 6.8 0 0 1 6-5"
+                    />
+                  </svg>
+                </ng-container>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="contact__column contact__column--stack">
+        <form class="form-card" novalidate>
+          <div class="form-grid">
+            <label>
+              <span>Name *</span>
+              <input type="text" placeholder="How should I address you?" required />
+            </label>
+            <label>
+              <span>Email *</span>
+              <input type="email" placeholder="you@email.com" required />
+            </label>
+            <label class="full">
+              <span>Subject</span>
+              <input type="text" placeholder="What should we talk about?" />
+            </label>
+            <label class="full">
+              <span>Message</span>
+              <textarea rows="4" placeholder="Share a short brief, goals, and timeline."></textarea>
+            </label>
+          </div>
+
+          <button type="submit">
+            Send Message
+            <span aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M4 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </span>
+          </button>
+        </form>
+
+        <div class="contact__newsletter" aria-labelledby="contact-newsletter-title">
+          <div>
+            <p class="label">{{ stayUpdated.title }}</p>
+            <h4 id="contact-newsletter-title">{{ stayUpdated.headline }}</h4>
+            <p>{{ stayUpdated.description }}</p>
+          </div>
+          <form class="contact__newsletter-form" novalidate>
+            <label class="sr-only" for="contact-newsletter-email">Email address</label>
+            <input
+              id="contact-newsletter-email"
+              type="email"
+              [placeholder]="stayUpdated.placeholder"
+              required
+            />
+            <button type="submit">
+              {{ stayUpdated.cta }}
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

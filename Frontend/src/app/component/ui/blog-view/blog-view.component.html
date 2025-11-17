@@ -1,0 +1,78 @@
+<section class="blog-view">
+  <header class="blog-view__top">
+    <button class="blog-view__back" type="button" (click)="closed.emit()">&larr; Back to Blog</button>
+    <div class="blog-view__actions">
+      <button class="blog-view__icon-button" type="button" aria-label="Share article">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 12a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm10-7 5 5-5 5v-3h-5V8h5V5Zm-8 9h6v2H9v-2Zm-2 4h10v2H7v-2Z" />
+        </svg>
+      </button>
+      <button class="blog-view__icon-button" type="button" aria-label="Bookmark article">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Zm1 2v12.764l5-2.857 5 2.857V5H7Z" />
+        </svg>
+      </button>
+      <button class="blog-view__close" type="button" aria-label="Close" (click)="closed.emit()">&times;</button>
+    </div>
+  </header>
+
+  <span class="blog-view__badge">{{ post.category }}</span>
+  <h2>{{ post.title }}</h2>
+  <p class="blog-view__excerpt">{{ post.excerpt }}</p>
+
+  <div class="blog-view__author">
+    <div class="blog-view__avatar">AU</div>
+    <div>
+      <p>Admin User</p>
+      <span>Full-stack developer with 8+ years of experience.</span>
+    </div>
+  </div>
+
+  <div class="blog-view__meta">
+    <span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12v2H6V2Zm12 4H6v16l6-3 6 3V6Z" /></svg>
+      {{ post.date | date: 'longDate' }}
+    </span>
+    <span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5h4v2H10V8h2Zm0-6a10 10 0 1 1 0 20 10 10 0 0 1 0-20Z" /></svg>
+      {{ post.readTime }}
+    </span>
+    <span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5c5 0 9 5 9 7s-4 7-9 7-9-5-9-7 4-7 9-7Zm0 2c-3.86 0-7 3.65-7 5s3.14 5 7 5 7-3.65 7-5-3.14-5-7-5Zm0 2.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z" /></svg>
+      {{ post.views }} views
+    </span>
+  </div>
+
+  <div class="blog-view__image">
+    <img [src]="post.image" [alt]="post.title" />
+  </div>
+
+  <article class="blog-view__content">
+    <p>{{ post.content }}</p>
+  </article>
+
+  <footer class="blog-view__cta">
+    <div class="blog-view__cta-actions">
+      <button type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 6.6c-1.76-2.13-5.5-1.27-5.5 1.87 0 2.7 3.61 5.61 5.5 6.91 1.89-1.3 5.5-4.21 5.5-6.91 0-3.14-3.74-4-5.5-1.87Z"
+          />
+        </svg>
+        21 Likes
+      </button>
+      <button type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 12a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm10-7 5 5-5 5v-3h-5V8h5V5Zm-8 9h6v2H9v-2Zm-2 4h10v2H7v-2Z" />
+        </svg>
+        Share
+      </button>
+    </div>
+    <button class="blog-view__bookmark" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Zm1 2v12.764l5-2.857 5 2.857V5H7Z" />
+      </svg>
+      Bookmark
+    </button>
+  </footer>
+</section>

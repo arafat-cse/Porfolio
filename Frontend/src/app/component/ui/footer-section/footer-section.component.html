@@ -1,0 +1,34 @@
+<footer class="footer" id="footer">
+  <div class="footer__content">
+    <div class="footer__brand">
+      <p class="label">Stay Connected</p>
+      <h4>{{ brand.name }}</h4>
+      <p>{{ brand.tagline }}</p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <p class="label">Explore</p>
+      <a *ngFor="let link of navLinks" [attr.href]="'#' + link.target">{{ link.label }}</a>
+    </nav>
+
+    <div class="footer__social">
+      <p class="label">Social</p>
+      <div class="footer__icons">
+        <a
+          *ngFor="let social of socials"
+          [href]="social.url"
+          target="_blank"
+          rel="noreferrer noopener"
+          [attr.aria-label]="social.label"
+        >
+          <span>{{ social.label }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>{{ copyright }}</p>
+    <p>{{ builtWith }}</p>
+  </div>
+</footer>

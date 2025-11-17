@@ -1,0 +1,114 @@
+:host {
+  display: block;
+  --testimonials-bg: #ffffff;
+  --testimonials-text: #0f172a;
+  --testimonials-muted: rgba(71, 85, 105, 0.8);
+  --testimonials-card: #f8fafc;
+  --testimonials-border: rgba(15, 23, 42, 0.08);
+  --testimonials-label: #7c3aed;
+}
+
+:host-context(.dark-mode) {
+  --testimonials-bg: #040817;
+  --testimonials-text: #e2e8f0;
+  --testimonials-muted: rgba(226, 232, 240, 0.7);
+  --testimonials-card: #0f172a;
+  --testimonials-border: rgba(148, 163, 184, 0.2);
+  --testimonials-label: #a5b4fc;
+}
+
+.testimonials {
+  background: var(--testimonials-bg);
+  border-radius: 2rem;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  color: var(--testimonials-text);
+  text-align: center;
+}
+
+.testimonials__content {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  color: var(--testimonials-label);
+}
+
+.testimonials__header h3 {
+  margin: 0.8rem auto 0;
+  max-width: 720px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.testimonials__grid article {
+  background: var(--testimonials-card);
+  border-radius: 1.5rem;
+  border: 1px solid var(--testimonials-border);
+  padding: 1.5rem;
+  text-align: left;
+  max-width: 320px;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.testimonial__icon {
+  font-size: 2rem;
+  color: #818cf8;
+}
+
+.testimonial__rating {
+  color: #fbbf24;
+  letter-spacing: 0.2rem;
+}
+
+.testimonial__quote {
+  margin: 0;
+  color: var(--testimonials-muted);
+}
+
+.testimonial__author span {
+  display: block;
+  color: var(--testimonials-muted);
+  font-size: 0.85rem;
+}
+
+.testimonials__partners {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.partners__logos {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.partners__logos span {
+  border-radius: 0.9rem;
+  border: 1px solid var(--testimonials-border);
+  padding: 0.5rem 1.2rem;
+  color: var(--testimonials-muted);
+}
+
+@media (max-width: 900px) {
+  .testimonials__grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}

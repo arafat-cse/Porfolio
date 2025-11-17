@@ -1,0 +1,12 @@
+<div class="blog-detail">
+  <ng-container *ngIf="post; else missing">
+    <app-blog-view [post]="post" (closed)="handleClose()"></app-blog-view>
+  </ng-container>
+</div>
+
+<ng-template #missing>
+  <div class="blog-detail__missing">
+    <p>We couldn't find that article.</p>
+    <button type="button" (click)="handleClose()">Back to blog</button>
+  </div>
+</ng-template>

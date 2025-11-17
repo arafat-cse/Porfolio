@@ -1,0 +1,32 @@
+<section class="newsletter">
+  <div class="newsletter__content">
+    <div class="newsletter__card">
+      <div class="newsletter__text">
+        <p class="label">{{ title }}</p>
+        <h3>{{ headline }}</h3>
+        <p>{{ description }}</p>
+      </div>
+      <form class="newsletter__form" novalidate>
+        <label class="sr-only" for="newsletter-email">Email address</label>
+        <input id="newsletter-email" type="email" placeholder="Enter your email" required />
+        <button type="submit">
+          Subscribe
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="presentation">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </button>
+      </form>
+    </div>
+
+    <footer class="newsletter__footer">
+      <div>
+        <p>{{ copyright }}</p>
+        <p>{{ builtWith }}</p>
+      </div>
+      <a href="#" class="admin-link">{{ adminLabel }}</a>
+    </footer>
+  </div>
+</section>

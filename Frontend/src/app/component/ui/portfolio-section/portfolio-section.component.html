@@ -1,0 +1,37 @@
+<section class="section" id="portfolio">
+  <header class="section__header">
+    <p class="label">Portfolio</p>
+    <h3>My Portfolio</h3>
+    <p>A collection of projects that showcase skills in design, development, and problem-solving.</p>
+  </header>
+
+  <div class="filters">
+    <button
+      *ngFor="let filter of filters"
+      type="button"
+      [class.active]="filter === activeFilter"
+      (click)="setFilter(filter)"
+    >
+      {{ filter }}
+    </button>
+  </div>
+
+  <div class="projects">
+    <article *ngFor="let project of filteredProjects | slice:0:6">
+      <div class="project__image"></div>
+      <div class="project__body">
+        <p class="label category">{{ project.category }}</p>
+        <h4>{{ project.title }}</h4>
+        <p class="subtitle">{{ project.subtitle }}</p>
+        <p>{{ project.description }}</p>
+        <div class="stack">
+          <span *ngFor="let item of project.tags">{{ item }}</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="more" *ngIf="filteredProjects.length > 6">
+    <button type="button">Load More</button>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+<section class="hobbies" id="hobbies">
+  <div class="hobbies__content">
+    <header class="hobbies__header">
+      <p class="label">My Hobbies</p>
+      <h3>Beyond coding, these passions keep me energized and inspired.</h3>
+      <p class="subtitle">{{ intro }}</p>
+    </header>
+
+    <div class="hobbies__grid">
+      <article *ngFor="let hobby of hobbies">
+        <div class="card__image">
+          <img [src]="hobby.image" [alt]="hobby.title" />
+          <span class="card__icon">{{ hobby.icon }}</span>
+        </div>
+        <div class="card__body">
+          <h4>{{ hobby.title }}</h4>
+          <p>{{ hobby.description }}</p>
+          <small>{{ hobby.detail }}</small>
+        </div>
+      </article>
+    </div>
+
+    <div class="hobby__stats">
+      <article *ngFor="let stat of stats">
+        <span class="value">{{ stat.value }}</span>
+        <span class="label">{{ stat.label }}</span>
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+<section class="testimonials" id="testimonials">
+  <div class="testimonials__content">
+    <header class="testimonials__header">
+      <p class="label">What Clients Say</p>
+      <h3>Don't just take my word for it. Here's what my clients say about working with me.</h3>
+    </header>
+
+    <div class="testimonials__grid">
+      <article *ngFor="let testimonial of testimonials">
+        <div class="testimonial__icon">“</div>
+        <div class="testimonial__rating">
+          <span *ngFor="let star of [].constructor(testimonial.rating)">★</span>
+        </div>
+        <p class="testimonial__quote">{{ testimonial.quote }}</p>
+        <div class="testimonial__author">
+          <strong>{{ testimonial.name }}</strong>
+          <span>{{ testimonial.role }}, {{ testimonial.company }}</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="testimonials__partners">
+      <p class="label">Trusted by amazing companies</p>
+      <div class="partners__logos">
+        <span *ngFor="let partner of partners">{{ partner }}</span>
+      </div>
+    </div>
+  </div>
+</section>

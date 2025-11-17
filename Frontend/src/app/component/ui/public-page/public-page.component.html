@@ -1,0 +1,27 @@
+<app-navigation
+  [navLinks]="navLinks"
+  [activeSection]="activeSection"
+  [isDarkMode]="isDarkMode"
+  (themeToggled)="toggleTheme()"
+></app-navigation>
+
+<main class="main">
+  <!-- <section class="intro-card">
+    <div class="avatar" aria-hidden="true">AH</div>
+    <div>
+      <p class="eyebrow">Portfolio 2024</p>
+      <h2>Arafat.dev</h2>
+      <p>{{ subtitle }}</p>
+      <small>{{ lastUpdated }}</small>
+    </div>
+  </section> -->
+
+  <app-hero-section></app-hero-section>
+  <app-about-section></app-about-section>
+  <app-portfolio-section></app-portfolio-section>
+  <app-hobbies-section></app-hobbies-section>
+  <app-blog-section></app-blog-section>
+  <app-testimonials-section></app-testimonials-section>
+  <app-contact-section></app-contact-section>
+  <app-footer-section></app-footer-section>
+</main>

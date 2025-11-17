@@ -1,0 +1,79 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  --nav-height: 5.5rem;
+  padding: calc(var(--nav-height) + clamp(1rem, 2vw, 2rem)) clamp(1rem, 2vw, 2rem) clamp(2rem, 4vw, 3rem);
+  background: var(--page-bg, #f1f5f9);
+  transition: background 0.3s ease;
+}
+
+:host {
+  --page-bg: #f1f5f9;
+  --text-color: #0f172a;
+  --muted-text: #475569;
+  --accent-color: #6366f1;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+}
+
+:host.dark-mode {
+  --page-bg: #020617;
+  --text-color: #f8fafc;
+  --muted-text: rgba(226, 232, 240, 0.8);
+  --accent-color: #a78bfa;
+  --card-bg: rgba(15, 23, 42, 0.7);
+  --card-border: rgba(148, 163, 184, 0.25);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.intro-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--card-border, #e2e8f0);
+  background: var(--card-bg, #fff);
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 1.1rem;
+  background: linear-gradient(120deg, #6d28d9, #ec4899);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.2rem;
+  color: var(--muted-text);
+  margin: 0;
+}
+
+.intro-card h2 {
+  margin: 0.2rem 0;
+  color: var(--text-color);
+}
+
+.intro-card p {
+  margin: 0;
+  color: var(--muted-text);
+}
+
+.intro-card small {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted-text);
+}

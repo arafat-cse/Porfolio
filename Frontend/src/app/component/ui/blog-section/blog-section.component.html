@@ -1,0 +1,91 @@
+<section class="blog" id="blog">
+  <div class="blog__content">
+    <header class="blog__header">
+      <p class="label">Blog & Insights</p>
+      <h3>Thoughts, tutorials, and insights about development, design, and life in tech.</h3>
+    </header>
+
+    <div class="blog__toolbar">
+      <input
+        type="search"
+        placeholder="Search articles..."
+        [(ngModel)]="searchTerm"
+        aria-label="Filter posts"
+      />
+      <div class="view-toggle" aria-label="View switcher">
+        <span>View:</span>
+        <div class="view-toggle__group">
+          <button
+            type="button"
+            [class.active]="viewMode === 'grid'"
+            (click)="setViewMode('grid')"
+          >
+            Grid
+          </button>
+          <button
+            type="button"
+            [class.active]="viewMode === 'list'"
+            (click)="setViewMode('list')"
+          >
+            List
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog__filters">
+      <button
+        *ngFor="let filter of filters"
+        type="button"
+        [class.active]="filter === activeFilter"
+        (click)="setFilter(filter)"
+      >
+        {{ filter }}
+      </button>
+    </div>
+
+    <div class="posts" [class.posts--list]="viewMode === 'list'">
+      <article *ngFor="let post of visiblePosts" [class.post--list]="viewMode === 'list'">
+        <div class="post__image">
+          <img [src]="post.image" [alt]="post.title" alt="image" />
+          <div class="post__flags">
+            <span *ngFor="let flag of post.flags">{{ flag }}</span>
+          </div>
+          <span class="post__badge" *ngIf="post.featured">Featured</span>
+        </div>
+        <div class="post__body">
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.excerpt }}</p>
+          <div class="post__meta">
+            <span>{{ post.date }}</span>
+            <span>&bull;</span>
+            <span>{{ post.readTime }}</span>
+            <span>&bull;</span>
+            <span>{{ post.views }} reads</span>
+          </div>
+          <div class="post__tags">
+            <span *ngFor="let tag of post.tags">{{ tag }}</span>
+          </div>
+          <button class="btn-text" type="button" (click)="openPost(post)">Read More</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="posts__more" *ngIf="visiblePosts.length < filteredPosts.length">
+      <button type="button" (click)="loadMore()">Load More</button>
+    </div>
+
+    <div class="blog__cta">
+      <div>
+        <p class="label">Stay Updated</p>
+        <h4>Subscribe for the latest articles</h4>
+        <p>Get notified about new deep dives on product, design, and engineering.</p>
+      </div>
+      <form>
+        <input type="email" placeholder="Enter your email" />
+        <button type="button">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,67 @@
+<nav
+  class="nav"
+  [class.nav--scrolled]="scrolled"
+  [@slideFade]
+>
+  <div class="nav__inner">
+    <div class="nav__brand">
+      <button type="button" (click)="scrollTo('home', $event)" aria-label="Back to home">
+        <span class="spark"></span>
+        <span class="label">Portfolio</span>
+      </button>
+    </div>
+
+    <div class="nav__desktop">
+      <div class="nav__list">
+        <button
+          *ngFor="let item of navLinks; let i = index"
+          type="button"
+          class="nav__link"
+          [class.active]="activeSection === item.target"
+          (click)="scrollTo(item.target, $event)"
+          [style.transitionDelay]="(i * 60) + 'ms'"
+        >
+          <span>{{ item.label }}</span>
+        </button>
+      </div>
+      <button type="button" class="theme-btn" (click)="toggleTheme()" aria-label="Toggle color mode">
+        <span *ngIf="isDarkMode; else sun" class="icon">🌙</span>
+        <ng-template #sun><span class="icon">☀️</span></ng-template>
+      </button>
+    </div>
+
+    <div class="nav__mobile">
+      <button type="button" class="theme-btn" (click)="toggleTheme()" aria-label="Toggle color mode">
+        <span *ngIf="isDarkMode; else sunMobile" class="icon">🌙</span>
+        <ng-template #sunMobile><span class="icon">☀️</span></ng-template>
+      </button>
+      <button
+        type="button"
+        class="menu-btn"
+        (click)="toggleMenu()"
+        aria-label="Toggle navigation menu"
+      >
+        <span *ngIf="!isMenuOpen; else closeIcon">☰</span>
+        <ng-template #closeIcon>✕</ng-template>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<ng-container *ngIf="isMenuOpen">
+  <div class="backdrop" (click)="closeMenu()" @fade></div>
+  <div class="mobile-menu" @scaleFade>
+    <div class="mobile-menu__items">
+      <button
+        *ngFor="let item of navLinks"
+        type="button"
+        class="mobile-link"
+        (click)="scrollTo(item.target, $event)"
+      >
+        <span>{{ item.label }}</span>
+      </button>
+    </div>
+    <p class="mobile-menu__footer">Copyright 2024. Built with love.</p>
+  </div>
+</ng-container>
+
