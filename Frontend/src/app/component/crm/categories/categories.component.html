@@ -7,6 +7,17 @@
     <button type="button" (click)="toggleModal()">+ Add Category</button>
   </header>
 
+  <div class="filters">
+    <button
+      type="button"
+      *ngFor="let filter of filters"
+      [class.active]="filter === selectedType"
+      (click)="setFilter(filter)"
+    >
+      {{ filter }}
+    </button>
+  </div>
+
   <div class="table-wrapper">
     <table>
       <thead>
@@ -18,15 +29,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngIf="categories.length === 0">
+        <tr *ngIf="loading">
+          <td colspan="4">Loading categories...</td>
+        </tr>
+        <tr *ngIf="!loading && filteredCategories.length === 0">
           <td colspan="4">No categories found.</td>
         </tr>
-        <tr *ngFor="let category of categories; index as i">
+        <tr *ngFor="let category of filteredCategories; index as i">
           <td>{{ i + 1 }}</td>
           <td>{{ category.name }}</td>
           <td>{{ category.type }}</td>
           <td>
-            <button class="ghost" type="button" (click)="remove(i)">Remove</button>
+            <button class="ghost" type="button" (click)="remove(category)">Remove</button>
           </td>
         </tr>
       </tbody>
@@ -56,6 +70,6 @@
       </select>
     </label>
 
-    <button type="submit">Save Category</button>
+    <button type="submit" [disabled]="loading">Save Category</button>
   </form>
 </section>
