@@ -1,0 +1,31 @@
+<section class="crm-shell">
+  <aside class="crm-shell__sidebar">
+    <div class="crm-shell__user">
+      <div class="avatar">{{ (user?.name || 'A')[0] }}</div>
+      <div>
+        <p>{{ user?.name || 'Admin User' }}</p>
+        <small>{{ user?.email || 'admin&#64;admin.com' }}</small>
+      </div>
+    </div>
+
+    <nav>
+      <a
+        *ngFor="let item of navItems"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.path === '/crm/dashboard' }"
+      >
+        <span class="icon">{{ item.icon }}</span>
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <div class="crm-shell__footer">
+      <button type="button" (click)="logout()">Logout</button>
+    </div>
+  </aside>
+
+  <main class="crm-shell__content">
+    <router-outlet></router-outlet>
+  </main>
+</section>

@@ -1,0 +1,22 @@
+<form class="crm-form" [formGroup]="aboutForm" (ngSubmit)="submit()">
+  <h3>About Section</h3>
+  <p>Update the story and skills displayed on the site.</p>
+
+  <label>
+    Headline
+    <input formControlName="headline" />
+  </label>
+
+  <label>
+    Bio
+    <textarea rows="4" formControlName="bio"></textarea>
+  </label>
+
+  <label>
+    Skills (comma separated)
+    <input formControlName="skills" />
+  </label>
+
+  <button type="submit">Save changes</button>
+  <p class="success" *ngIf="saved">{{ saved }}</p>
+</form>

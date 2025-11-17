@@ -1,0 +1,30 @@
+<form class="crm-form" [formGroup]="testimonialsForm" (ngSubmit)="submit()">
+  <h3>Testimonials</h3>
+  <p>Add social proof to build trust.</p>
+
+  <div class="project" *ngFor="let testimonial of testimonials.controls; index as i" [formGroupName]="i">
+    <div class="project__header">
+      <h4>Testimonial {{ i + 1 }}</h4>
+      <button type="button" (click)="removeTestimonial(i)" *ngIf="testimonials.length > 1">Remove</button>
+    </div>
+
+    <label>
+      Name
+      <input formControlName="name" />
+    </label>
+
+    <label>
+      Role
+      <input formControlName="role" />
+    </label>
+
+    <label>
+      Quote
+      <textarea rows="3" formControlName="quote"></textarea>
+    </label>
+  </div>
+
+  <button type="button" class="ghost" (click)="addTestimonial()">+ Add another</button>
+  <button type="submit">Save testimonials</button>
+  <p class="success" *ngIf="saved">{{ saved }}</p>
+</form>

@@ -1,0 +1,124 @@
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.35rem;
+  font-size: 0.75rem;
+  color: #7c3aed;
+  margin: 0;
+}
+
+.overview h2 {
+  margin: 0.4rem 0 0;
+  color: #0f172a;
+}
+
+.overview__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.overview__stats article {
+  background: #fff;
+  border-radius: 1.2rem;
+  padding: 1.2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.overview__stats .icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 1rem;
+  background: #eef2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.overview__stats h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.overview__stats p {
+  margin: 0;
+  color: #475569;
+}
+
+.overview__stats small {
+  color: #94a3b8;
+}
+
+.overview__quick,
+.overview__activity {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.overview__quick h3,
+.overview__activity h3 {
+  margin: 0 0 1rem;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.8rem;
+}
+
+.actions button {
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 1rem;
+  padding: 0.85rem 1.1rem;
+  font-weight: 600;
+  background: #fff;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.actions button.accent {
+  background: linear-gradient(120deg, #7c3aed, #0ea5e9);
+  color: #fff;
+  border: none;
+}
+
+.activity {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.activity article:last-child {
+  border: none;
+}
+
+.activity p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.activity small {
+  color: #94a3b8;
+}
+
+.activity span {
+  color: #94a3b8;
+}

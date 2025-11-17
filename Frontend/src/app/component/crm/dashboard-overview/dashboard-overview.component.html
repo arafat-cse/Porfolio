@@ -1,0 +1,41 @@
+<section class="overview">
+  <header>
+    <div>
+      <p class="label">Dashboard Overview</p>
+      <h2>Manage your portfolio content from this central dashboard</h2>
+    </div>
+  </header>
+
+  <div class="overview__stats">
+    <article *ngFor="let stat of stats">
+      <div class="icon">{{ stat.icon }}</div>
+      <div>
+        <h3>{{ stat.value }}</h3>
+        <p>{{ stat.label }}</p>
+        <small>{{ stat.subtext }}</small>
+      </div>
+    </article>
+  </div>
+
+  <section class="overview__quick">
+    <h3>Quick Actions</h3>
+    <div class="actions">
+      <button *ngFor="let action of actions" [class.accent]="action.accent">
+        {{ action.label }}
+      </button>
+    </div>
+  </section>
+
+  <section class="overview__activity">
+    <h3>Recent Activity</h3>
+    <div class="activity">
+      <article *ngFor="let item of activity">
+        <div>
+          <p>{{ item.title }}</p>
+          <small>{{ item.subtitle }}</small>
+        </div>
+        <span>{{ item.timeAgo }}</span>
+      </article>
+    </div>
+  </section>
+</section>

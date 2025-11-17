@@ -1,0 +1,61 @@
+<section class="categories">
+  <header>
+    <div>
+      <p class="label">Category Management</p>
+      <h2>Organize reusable types for your content.</h2>
+    </div>
+    <button type="button" (click)="toggleModal()">+ Add Category</button>
+  </header>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="categories.length === 0">
+          <td colspan="4">No categories found.</td>
+        </tr>
+        <tr *ngFor="let category of categories; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ category.name }}</td>
+          <td>{{ category.type }}</td>
+          <td>
+            <button class="ghost" type="button" (click)="remove(i)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="modal-backdrop" *ngIf="modalOpen" (click)="toggleModal()"></div>
+
+<section class="modal" *ngIf="modalOpen">
+  <header>
+    <h3>Create Category</h3>
+    <button class="close" type="button" (click)="toggleModal()">&times;</button>
+  </header>
+
+  <form [formGroup]="categoryForm" (ngSubmit)="submit()" novalidate>
+    <label>
+      Category name
+      <input formControlName="name" placeholder="e.g. Fintech" />
+    </label>
+
+    <label>
+      Select Type
+      <select formControlName="type">
+        <option value="">Select type</option>
+        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+      </select>
+    </label>
+
+    <button type="submit">Save Category</button>
+  </form>
+</section>

@@ -1,0 +1,25 @@
+<form class="crm-form" [formGroup]="hobbiesForm" (ngSubmit)="submit()">
+  <h3>Hobbies Section</h3>
+  <p>Highlight personal interests that humanize your portfolio.</p>
+
+  <div class="project" *ngFor="let hobby of hobbies.controls; index as i" [formGroupName]="i">
+    <div class="project__header">
+      <h4>Hobby {{ i + 1 }}</h4>
+      <button type="button" (click)="removeHobby(i)" *ngIf="hobbies.length > 1">Remove</button>
+    </div>
+
+    <label>
+      Title
+      <input formControlName="title" />
+    </label>
+
+    <label>
+      Detail
+      <textarea rows="2" formControlName="detail"></textarea>
+    </label>
+  </div>
+
+  <button type="button" class="ghost" (click)="addHobby()">+ Add another</button>
+  <button type="submit">Save changes</button>
+  <p class="success" *ngIf="saved">{{ saved }}</p>
+</form>
